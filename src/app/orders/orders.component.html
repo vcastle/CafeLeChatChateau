@@ -1,0 +1,38 @@
+<div class="container" style="margin: 0 auto;text-align: center;" >
+    <div class="row mb-3">
+    <!-- <img src=""> -->
+
+    <h3 style="margin-bottom:15px;text-align: left;">Create your coffee order here</h3>
+    <form [formGroup]="this.ordersService.form" novalidate>
+        <!-- Each formControlName references the names we used in the formGroup created inside the OrdersService class. -->
+        <div class="col-md-8 themed-grid-col">
+
+            <input placeholder="Order Number" formControlName="orderNumber" type="text" class="form-control">
+            <br/>
+            <input placeholder="Customer Name" formControlName="customerName" type="text" class="form-control">
+            <br/>
+        <!--add cafe to order-->
+           <button class="btn btn-info col-lg-4"
+                style="margin:10px 5px 10px 0px;" 
+                *ngFor="let coffee of coffees" 
+                (click)="addCoffee(coffee)">
+                {{coffee}}
+            </button>    
+        </div>
+
+        <div class="col-md-4 themed-grid-col" style="background-color:#f3f3f3">
+            <h4>Review Order</h4>
+        <!--order list and remove a cafe-->
+        <ul class="collection" style="list-style: none;background:lightblue;padding:0px;">
+            <li *ngFor="let coffee of coffeeOrder">
+              <span style="margin:5px;"> {{ coffee }} </span>
+              <a style="color:crimson;cursor: pointer;font-size:15px;" (click)="removeCoffee(coffee)">remove</a>
+            </li>
+        </ul> 
+
+        <!--submit order to collection-->
+        <button class="btn btn-success col-lg-6" (click)="onSubmit()" *ngIf="showSubmit">Submit</button>
+    </div>
+    </form>
+    </div>
+</div>

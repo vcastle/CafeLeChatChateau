@@ -1,0 +1,44 @@
+<div class="container" style="border: solid 2px lightcoral; padding: 15px;border-radius:5px;">
+
+
+<div class="col-lg-12">
+<table>
+        <thead>
+          <tr>
+            <th class="header">Order No.</th>
+            <th class="header">Name</th>
+            <th class="header">Coffee List</th>
+          </tr>
+        </thead>
+      
+        <tbody class="des">
+          <tr class="leRow" *ngFor="let order of coffeeOrders">
+            <td style="padding:10px 0px;">
+              {{ order.payload.doc.data().orderNumber }}
+            </td>
+            <td style="padding:10px 0px;">{{ order.payload.doc.data().customerName }}</td>
+            <td style="padding:10px 0px;">
+              <span id="cafe" *ngFor="let coffee of order.payload.doc.data().coffeeOrder">
+                {{ coffee }}
+              </span>
+            </td>
+
+            <td style="padding:10px 0px;"
+              [hidden]="order.payload.doc.data().completed" (click)="markCompleted(order)">
+              <button class="btn btn-success leBtn">Mark as Done?</button>
+            </td>
+
+            <td style="padding:10px 0px;"
+              [hidden]="order.payload.doc.data().completed" (click)="deleteOrder(order)">
+            <button class="btn btn-danger">Remove Order</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+   </div>   
+
+   <div>
+      <ul style="list-style: none;">
+        <li></li>
+      </ul>
+</div></div>

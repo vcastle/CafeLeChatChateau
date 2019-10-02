@@ -1,0 +1,22 @@
+.header {
+    padding-right: 50px !important;
+    padding-bottom:15px;
+    font-size: 16px;
+}
+
+.des {
+    font-size: 15px;
+    margin-bottom:30px;
+}
+
+#cafe {
+    padding-right:12px;
+}
+
+.leBtn {
+    margin-right: 10px;
+}
+
+.leRow {
+    border-bottom: solid 2px #e9e9e9;
+}
