@@ -53,8 +53,8 @@ updateCoffeeOrder(data) {
 // you need to know both the collection name and the document id to correctly identify which record you want to delete
 deleteCoffeeOrder(data) {
   return this.firestore
-      .collection('coffeeOrders')
-      .doc(data.payload.doc.id)
-      .delete();
+             .collection('coffeeOrders')
+             .doc(data.payload.doc.id)
+             .delete();
 }
 }
