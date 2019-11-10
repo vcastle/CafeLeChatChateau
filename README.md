@@ -1,27 +1,27 @@
-# CafeLeChatChateau
+# Project
+Château de Nala - Coffee ordering CRUD app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
+# Description
 
-## Development server
+This web app was built in the perspective of an employee at a coffee shop.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Put in an order for a coffee (or two) using the form on site. Be sure to look carefully as an Order number and a Name is required. Review the order to verify everything is correct. Click <kbd>submit</kbd> and your order will be put on the list! You can mark the order as <kbd>Done</kbd> or <kbd>Remove</kbd> the order.
 
-## Code scaffolding
+# Built With
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Bootstrap]
+- [TypeScript]
+- [Cloud Firestore]
 
-## Build
+# Examples
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+![Image of Reservation](/catcafe_landing.png)
 
-## Running unit tests
+Put in a new order -
+![Image of Reservation](/catcafe_neworder.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Submitted order -
+![Image of Reservation](/catcafe_submit.png)
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The order in database
+![Image of Reservation](/nalacafe_db.jpg)
