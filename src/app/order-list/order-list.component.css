@@ -1,22 +1,40 @@
-.header {
+/* GLOBAL STYLES */
+.bkgd {
+    padding: 15px;
+    border-radius:5px;
+    background-color:rgba(0,0,230,0.12);
+}
+
+.noDots {
+    list-style: none;
+}
+
+.pr15 {
+    padding-right:15px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+/* TABLE */
+
+.table_header {
     padding-right: 50px !important;
     padding-bottom:15px;
     font-size: 16px;
 }
 
-.des {
+.table_body {
     font-size: 15px;
     margin-bottom:30px;
 }
 
-#cafe {
-    padding-right:12px;
+.table_description {
+    padding:10px 5px;
 }
 
-.leBtn {
-    margin-right: 10px;
-}
 
-.leRow {
-    border-bottom: solid 2px #e9e9e9;
+.divider {
+    border-bottom: solid 2px rgba(0,0,230,0.12);
 }

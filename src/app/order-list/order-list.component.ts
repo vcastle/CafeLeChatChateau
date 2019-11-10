@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { OrdersService } from '../shared/orders.service';
+import { OrdersComponent } from '../orders/orders.component';
 
 @Component({
   selector: 'app-order-list',
@@ -7,7 +8,11 @@ import { OrdersService } from '../shared/orders.service';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
+  // how do i reference total sum via orders component???
+  // @Input() public totalSumResult: Array <any> = [];
+
   coffeeOrders;
+
   constructor(public ordersService: OrdersService) {}
 
   // fx loaded first

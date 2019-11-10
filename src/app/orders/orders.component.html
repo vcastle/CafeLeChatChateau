@@ -1,72 +1,123 @@
 <div class="container">
-    <div class="row mb-3">
-    <div class="col-md-8 themed-grid-col header" style="padding-left:0px;margin-bottom:15px;">
-        <img src="../assets/img/lechat_logo.png" alt="logo" >
-        <h2>Château de Nala </h2>
-        <p style="font-style: oblique;font-variant: small-caps;">café treats and sweets</p>
+  <div class="row mb-3">
+    <div class="col-md-8 themed-grid-col header" id="topnav">
+      <img src="../assets/img/lechat_logo.png" alt="logo" />
+      <h2>Château de Nala</h2>
+      <p id="subHeader">café treats and sweets</p>
     </div>
 
     <!--Reactive Form-->
     <form [formGroup]="this.ordersService.form" novalidate>
-        <!-- Each formControlName references the names we used in the formGroup created inside the OrdersService class. -->
-        <div class="col-md-6 themed-grid-col" style="padding:15px;">
-            <h4>Create Your Cafe Order Here</h4>
-            <input placeholder="Order Number" formControlName="orderNumber" type="text" class="form-control">
-            <!-- order number -->
-            <div
-                class="error"
-                *ngIf="this.ordersService.form.get('orderNumber').hasError('required') && this.ordersService.form.get('orderNumber').touched">
-                Order Number is required
-            </div>
-            <div
-                class="error"
-                *ngIf="this.ordersService.form.get('orderNumber').hasError('minlength') && this.ordersService.form.get('orderNumber').touched">
-                Minimum of 2 characters
-            </div>
-            <br/>
-            <input placeholder="Customer Name" formControlName="customerName" type="text" class="form-control">
-            <!-- name -->
-            <div
-                class="error"
-                *ngIf="this.ordersService.form.get('customerName').hasError('required') && this.ordersService.form.get('customerName').touched">
-                Name is required
-            </div>
-            <div
-                class="error"
-                *ngIf="this.ordersService.form.get('customerName').hasError('minlength') && this.ordersService.form.get('customerName').touched">
-                Minimum of 2 characters
-            </div>
-            <br/>
-            <!--add cafe to order-->
-            <h4>Menu</h4>
-                <button class="btn btn-info"
-                    style="margin:10px 5px 10px 0px;font-size:15px;" 
-                    *ngFor="let coffee of coffees" 
-                    (click)="addCoffee(coffee)">
-                    {{ coffee }} 
-                    <!-- {{ coffee.product }} | ${{ coffee.price }} -->
-                </button>    
+      <!-- Each formControlName references the names we used in the formGroup created inside the OrdersService class. -->
+      <div class="col-md-6 themed-grid-col p15">
+        <h4>Create Your Cafe Order Here</h4>
+        <input
+          placeholder="Order Number"
+          formControlName="orderNumber"
+          type="text"
+          class="form-control"
+        />
+        <!-- order number -->
+        <div
+          class="error"
+          *ngIf="
+            this.ordersService.form.get('orderNumber').hasError('required') &&
+            this.ordersService.form.get('orderNumber').touched
+          "
+        >
+          Order Number is required
         </div>
+        <div
+          class="error"
+          *ngIf="
+            this.ordersService.form.get('orderNumber').hasError('minlength') &&
+            this.ordersService.form.get('orderNumber').touched
+          "
+        >
+          Minimum of 2 characters
+        </div>
+        <br />
+        <input
+          placeholder="Customer Name"
+          formControlName="customerName"
+          type="text"
+          class="form-control"
+        />
+        <!-- name -->
+        <div
+          class="error"
+          *ngIf="
+            this.ordersService.form.get('customerName').hasError('required') &&
+            this.ordersService.form.get('customerName').touched
+          "
+        >
+          Name is required
+        </div>
+        <div
+          class="error"
+          *ngIf="
+            this.ordersService.form.get('customerName').hasError('minlength') &&
+            this.ordersService.form.get('customerName').touched
+          "
+        >
+          Minimum of 2 characters
+        </div>
+        <br />
+        <!--add cafe to order-->
+        <h4>Menu</h4>
+        <button
+          class="btn btn-info addCafe"
+          *ngFor="let coffee of coffees"
+          (click)="addCoffee(coffee)"
+        >
+          <!-- {{ coffee }}  -->
+          <!-- {{ coffee.product }} | ${{ coffee.price }} -->
+          {{ coffee }}
+        </button>
+      </div>
 
-        <div class="col-md-6 col-lg-6 themed-grid-col" style="background-color:#f3f3f3;text-align: center;">
-            <h4>Review Order</h4>
+      <div class="col-md-6 col-lg-6 themed-grid-col" id="review">
+        <h4>Review Order</h4>
+
         <!--order list and remove a cafe-->
-            <ul class="collection" style="list-style: none;background:lightblue;padding:0px;" id="pending">
-                <li *ngFor="let coffee of coffeeOrder" >
-                        <span style="margin:5px;"> {{ coffee }}</span>
-                    <!-- <span style="margin:5px;"> {{ coffee.product }} | ${{ coffee.price }}</span> -->
-                    <a style="color:crimson;cursor: pointer;font-size:15px;" (click)="removeCoffee(coffee)">remove</a>
-                </li>
-            </ul> 
+        <ul class="collection list" id="pending">
+          <li *ngFor="let coffee of coffeeOrder">
+            <span class="product">
+              <!-- {{ coffee.product }} | ${{ coffee.price }} -->
+              {{ coffee }}
+              </span>
+            <a class="remove" (click)="removeCoffee(coffee)">remove</a>
+          </li>
+        </ul>
+        <!-- <span *ngIf="coffeeOrder.length > 0" style="padding-bottom:15px;">
+          Total Cost: {{ totalSum }}</span
+        > -->
 
-         <!--submit order to collection-->
-        <button class="btn btn-warning col-lg-6 leBtn" *ngIf="showSubmit" (click)="cancel(coffeeOrder)">Cancel</button>
-        <!--submit order to collection-->
-        <button class="btn btn-success col-lg-6" type="submit" [disabled]="this.ordersService.form.invalid" *ngIf="showSubmit" (click)="onSubmit()">Submit</button>
+        <div class="col-lg-12 pb15">
+          <!--cancel pending order-->
+          <button
+            class="btn btn-warning mr10"
+            *ngIf="showSubmit"
+            (click)="cancel(coffeeOrder)"
+          >
+            Cancel
+          </button>
 
+          <!--submit order to collection-->
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="this.ordersService.form.invalid"
+            *ngIf="showSubmit"
+            (click)="onSubmit()"
+          >
+            Submit
+          </button>
+        </div>
         <!--success message-->
-
-    </div>
+      </div>
     </form>
-    </div>
+  </div>
+  <!--end row mb-3-->
 </div>
+<!--end container-->

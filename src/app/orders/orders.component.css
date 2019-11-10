@@ -1,14 +1,40 @@
+/* GLOBAL STYLES */
 h2 {
-    /* margin-bottom:30px;
-    text-align: left;
-    padding-bottom: 15px; */
     font-family:Didot, serif;
     font-style: oblique;
 }
 
-.hrgrey {
-    border-bottom: 1px solid #e4e4e4;
+.p15 {
+  padding: 15px;
+}
 
+.mr10 {
+  margin-right: 10px;
+}
+
+.pb15 {
+  padding-bottom: 15px;
+}
+
+/* VALIDATION */
+ .error {
+  color: crimson;
+  font-size: 16px;
+  padding: 10px 0px 0px 0px;
+}
+
+.success {
+  color: lightgreen;
+  font-size: 16px;
+  padding: 10px 0px 0px 0px;
+}
+
+/* TOP NAV */
+
+#topnav {
+  padding-left:0px;
+  margin-bottom:15px;
+  margin-top:25px;
 }
 
 .header img {
@@ -31,19 +57,46 @@ h2 {
     font-size:13px;
   }
 
-  .leBtn {
-    margin-right: 10px;
+#subHeader {
+  font-style: oblique;
+  font-variant: small-caps;
 }
 
 
-  .error {
-    color: crimson;
-    font-size: 16px;
-    padding: 10px 0px 0px 0px;
-  }
+/* BUTTONS */
+.addCafe {
+  margin:10px 5px 10px 0px;
+  font-size:15px;
+}
 
-  .success {
-    color: lightgreen;
-    font-size: 16px;
-    padding: 10px 0px 0px 0px;
-  }
+
+/* REVIEW ORDER SECTION */
+#review {
+  background-color:#eeeeee;
+  text-align: center;
+}
+
+#review h4 {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-top: 15px;
+}
+
+.list {
+  list-style: none;
+  padding:10px;
+  margin-bottom:5px;
+}
+
+.product {
+  margin:5px;
+  font-size:16px;
+  border-bottom:1px solid #acacac;
+}
+
+.remove {
+  color:crimson;
+  cursor: pointer;
+  font-size:15px;
+  padding-left:10px;
+}

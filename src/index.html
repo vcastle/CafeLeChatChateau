@@ -2,22 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>CafeLeChatChateau</title>
+  <title>Chateau de Nala</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-  <!-- Compiled and minified Materialize CSS -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-
-  <!-- Compiled and minified Materialize JavaScript -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
-
-  <!-- Google Material Icons -->
-  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet" /> -->
-
-  <!--css theme-->
-  <!-- <link href="node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css" rel="stylesheet"> -->
 
   <!--Bootstrap-->
   <link href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -36,16 +24,20 @@
 <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
 
 <script>
+
+// import config file
+  const config = require('./config');
+
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyCiJQyoPfPp3qdgFoj18Dc0QHPIwOhVSy0",
-    authDomain: "cafelechatchateau.firebaseapp.com",
-    databaseURL: "https://cafelechatchateau.firebaseio.com",
-    projectId: "cafelechatchateau",
-    storageBucket: "cafelechatchateau.appspot.com",
-    messagingSenderId: "710896770571",
-    appId: "1:710896770571:web:4e13c70f135e30232cf10e",
-    measurementId: "G-ZVB495F591"
+    apiKey: config.firebase.apiKey,
+    authDomain: config.firebase.authDomain,
+    databaseURL: config.firebase.databaseURL,
+    projectId: config.firebase.projectId,
+    storageBucket: config.firebase.storageBucket,
+    messagingSenderId: config.firebase.messagingSenderId,
+    appId: config.firebase.appId,
+    measurementId: config.firebase.measurementId
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
