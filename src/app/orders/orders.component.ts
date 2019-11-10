@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { OrdersService } from '../shared/orders.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { style } from '@angular/animations';
+
 
 @Component({
   selector: 'app-orders',
@@ -9,15 +9,18 @@ import { style } from '@angular/animations';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-// coffees = ['A-meow-ricano', 'Flat Fluff White', 'Cat-uccino', 'Latte', 'Espresso', 'Meow-chiatto', 'Mocha', 'Hot Chocolate', 'Kit-Tea'];
-coffees = [
-  {product: 'A-meow-ricano', price: '3' },
-  {product: 'Cat-uccino', price: '4.50' },
-  {product: 'Latte', price: '3.25' },
-  {product: 'Meow-chiatto', price: '4.75' },
-  {product: 'Mocha', price: '3.25' },
-  {product: 'Kit-Tea', price: '1.50' }
-];
+totalSum: number;
+@Output() public totalSumFound = new EventEmitter<any>();
+
+coffees = ['A-meow-ricano', 'Flat Fluff White', 'Cat-uccino', 'Latte', 'Espresso', 'Meow-chiatto', 'Mocha', 'Hot Chocolate', 'Kit-Tea'];
+// coffees = [
+//   {product: 'A-meow-ricano', price: 4 },
+//   {product: 'Cat-uccino', price: 3 },
+//   {product: 'Latte', price: 2 },
+//   {product: 'Meow-chiatto', price: 3 },
+//   {product: 'Mocha', price: 2 },
+//   {product: 'Kit-Tea', price: 2 }
+// ];
 
   coffeeOrder = []; // house cafe order
   showSubmit = false;
@@ -56,12 +59,36 @@ coffees = [
     // assign data to form value
     const data = this.ordersService.form.value;
 
+    // create order
     this.ordersService.createCoffeeOrder(data);
       //  .then(res => {
         // read up more on how to use promises
       //  });
 
-      // hides buttons
+
+    // creates an object of all the prices
+    // const prices = this.coffees.map( coffees => coffees.price );
+
+    // works but refactor
+    // adds the sum of products in order
+    // let sum = 0;
+    // this.coffeeOrder.forEach(obj => {
+    // for (const property in obj) {
+    //     if (property !== 'product') {
+    //     sum += obj[property];
+    //     }
+    //   }
+    // });
+
+    // this.totalSum = sum;
+
+    // this.totalSumFound.emit(this.totalSum);
+
+    // console.log('total sum of coffee order:', this.totalSum);
+
+
+
+    // hides buttons
     this.showSubmit = false;
 
     // clears array
@@ -70,13 +97,11 @@ coffees = [
     // resets form
     this.ordersService.form.reset();
 
-    // how can i reset the 'Review Orders' section?
-
     console.log('Order has been submitted!');
 
    }
 
-  ngOnInit() {
+ngOnInit() {
     // validation
     this.ordersService.form = new FormGroup({
       orderNumber: new FormControl('', [Validators.required, Validators.minLength(2)]),

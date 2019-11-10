@@ -1,42 +1,41 @@
-<div class="container" style="padding: 15px;border-radius:5px;background-color:RGBA(0,0,230,0.12);">
+<div class="container bkgd">
+  <div class="row mb-3">
 
-
-<div class="col-lg-12 col-xl-12">
-<table>
-        <thead>
+  <div class="col-lg-12 col-xl-8">
+      <table>
+        <thead class="divider">
           <tr>
-            <th class="header">Order No.</th>
-            <th class="header">Name</th>
-            <th class="header">Coffee List</th>
-            <!-- <th class="header">Total Cost</th> -->
+            <th class="table_header">Order No.</th>
+            <th class="table_header">Name</th>
+            <th class="table_header">Coffee Order</th>
+            <!-- <th class="table_header">Total Cost</th> -->
           </tr>
         </thead>
       
-        <tbody class="des">
-          <tr class="leRow" *ngFor="let order of coffeeOrders">
-            <td style="padding:10px 0px;">
+        <tbody class="table_body">
+          <tr class="divider" *ngFor="let order of coffeeOrders">
+            <td class="table_description">
               {{ order.payload.doc.data().orderNumber }}
             </td>
-            <td style="padding:10px 0px;">{{ order.payload.doc.data().customerName }}</td>
-            <td style="padding:10px 0px;">
-              <span id="cafe" *ngFor="let coffee of order.payload.doc.data().coffeeOrder">
+            <td class="table_description">{{ order.payload.doc.data().customerName }}</td>
+            <td class="table_description">
+              <span class="pr15" *ngFor="let coffee of order.payload.doc.data().coffeeOrder">
+                <!-- {{ coffee.product }} -->
                 {{ coffee }}
               </span>
             </td>
             
             <!--total cost-->
-            <!-- <td style="padding:10px 0px;">
-              <span id="cafe" *ngFor="let coffee of order.payload.doc.data().coffeeOrder">
-                {{ coffee.price }}
-              </span>
+            <!-- <td class="table_description">
+              <span>$</span>
             </td> -->
 
-            <td style="padding:10px 0px;"
+            <td class="table_description" id="leBtn"
               [hidden]="order.payload.doc.data().completed" (click)="markCompleted(order)">
-              <button class="btn btn-success leBtn">Mark as Done?</button>
+              <button class="btn btn-success">Mark as Done?</button>
             </td>
 
-            <td style="padding:10px 0px;"
+            <td class="table_description"
               [hidden]="order.payload.doc.data().completed" (click)="deleteOrder(order)">
             <button class="btn btn-danger">Remove Order</button>
             </td>
@@ -46,7 +45,10 @@
    </div>   
 
    <div>
-      <ul style="list-style: none;">
+      <ul class="noDots">
         <li></li>
       </ul>
-</div></div>
+  </div>
+
+  </div>  <!--end row mb-3-->
+</div> <!--end container-->
