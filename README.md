@@ -23,4 +23,4 @@ Submitted order -
 ![Image of Order Submitted](/chateauNala_submitted.png)
 
 The order in database
-![Image of Data in Firestore Database](/chateauNala_db.png)
+![Image of Data in Firestore Database](/chateauNala_fs.png)
