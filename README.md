@@ -9,19 +9,18 @@ Put in an order for a coffee (or two) using the form on site. Be sure to look ca
 
 # Built With
 
-- [Bootstrap]
-- [TypeScript]
+- [Angular]
 - [Cloud Firestore]
 
 # Examples
 
-![Image of Reservation](/catcafe_landing.png)
+![Image of Reservation](/chateauNala_pricing.png)
 
 Put in a new order -
-![Image of Reservation](/catcafe_neworder.png)
+![Image of Reservation](/chateauNala_newOrder.png)
 
 Submitted order -
-![Image of Reservation](/catcafe_submit.png)
+![Image of Reservation](/chateauNala_submitted.png)
 
 The order in database
-![Image of Reservation](/nalacafe_db.jpg)
+![Image of Reservation](/chateauNala_db.jpg)
