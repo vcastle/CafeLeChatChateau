@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-      <app-orders class="col-lg-12"></app-orders>
-      <app-order-list class="col-lg-12"></app-order-list>
+      <app-orders class="col-lg-12" (totalSumFound)="childEventClicked($event)"></app-orders>
+      <app-order-list class="col-lg-12" [totalSumResult]="clickedEvent"></app-order-list>
   </div>
 
     <!-- Footer -->

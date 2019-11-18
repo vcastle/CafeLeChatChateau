@@ -8,8 +8,7 @@ import { OrdersComponent } from '../orders/orders.component';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  // how do i reference total sum via orders component???
-  // @Input() public totalSumResult: Array <any> = [];
+@Input() totalSumResult: Event;
 
   coffeeOrders;
 
