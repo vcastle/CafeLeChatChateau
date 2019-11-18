@@ -1,54 +1,76 @@
 <div class="container bkgd">
   <div class="row mb-3">
-
-  <div class="col-lg-12 col-xl-8">
+    <div class="col-lg-12 col-xl-8">
       <table>
         <thead class="divider">
           <tr>
             <th class="table_header">Order No.</th>
             <th class="table_header">Name</th>
             <th class="table_header">Coffee Order</th>
-            <!-- <th class="table_header">Total Cost</th> -->
+            <th class="table_header">Total Cost</th>
           </tr>
         </thead>
-      
+
         <tbody class="table_body">
           <tr class="divider" *ngFor="let order of coffeeOrders">
+            <!--order number-->
             <td class="table_description">
               {{ order.payload.doc.data().orderNumber }}
             </td>
-            <td class="table_description">{{ order.payload.doc.data().customerName }}</td>
+
+            <!--customer name-->
             <td class="table_description">
-              <span class="pr15" *ngFor="let coffee of order.payload.doc.data().coffeeOrder">
-                <!-- {{ coffee.product }} -->
-                {{ coffee }}
+              {{ order.payload.doc.data().customerName }}
+            </td>
+
+            <!--products-->
+            <td class="table_description">
+              <span
+                class="pr15"
+                *ngFor="let coffee of order.payload.doc.data().coffeeOrder"
+              >
+                {{ coffee.product }}
               </span>
             </td>
-            
-            <!--total cost-->
-            <!-- <td class="table_description">
-              <span>$</span>
-            </td> -->
 
-            <td class="table_description" id="leBtn"
-              [hidden]="order.payload.doc.data().completed" (click)="markCompleted(order)">
+            <!--total cost-->
+            <td
+              class="table_description"
+              *ngIf="order.payload.doc.data().coffeeOrder[0].totalCost"
+            >
+              <span
+                >${{ order.payload.doc.data().coffeeOrder[0].totalCost }}</span
+              >
+            </td>
+
+            <!--buttons-->
+            <td
+              class="table_description"
+              id="leBtn"
+              [hidden]="order.payload.doc.data().completed"
+              (click)="markCompleted(order)"
+            >
               <button class="btn btn-success">Mark as Done?</button>
             </td>
 
-            <td class="table_description"
-              [hidden]="order.payload.doc.data().completed" (click)="deleteOrder(order)">
-            <button class="btn btn-danger">Remove Order</button>
+            <td
+              class="table_description"
+              [hidden]="order.payload.doc.data().completed"
+              (click)="deleteOrder(order)"
+            >
+              <button class="btn btn-danger">Remove Order</button>
             </td>
           </tr>
         </tbody>
       </table>
-   </div>   
+    </div>
 
-   <div>
+    <div>
       <ul class="noDots">
         <li></li>
       </ul>
+    </div>
   </div>
-
-  </div>  <!--end row mb-3-->
-</div> <!--end container-->
+  <!--end row mb-3-->
+</div>
+<!--end container-->

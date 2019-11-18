@@ -70,9 +70,8 @@
           *ngFor="let coffee of coffees"
           (click)="addCoffee(coffee)"
         >
-          <!-- {{ coffee }}  -->
-          <!-- {{ coffee.product }} | ${{ coffee.price }} -->
-          {{ coffee }}
+          {{ coffee.product }} | ${{ coffee.price }}
+          <!-- {{ coffee }} -->
         </button>
       </div>
 
@@ -83,15 +82,12 @@
         <ul class="collection list" id="pending">
           <li *ngFor="let coffee of coffeeOrder">
             <span class="product">
-              <!-- {{ coffee.product }} | ${{ coffee.price }} -->
-              {{ coffee }}
-              </span>
+              {{ coffee.product }} | ${{ coffee.price }}
+              <!-- {{ coffee }} -->
+            </span>
             <a class="remove" (click)="removeCoffee(coffee)">remove</a>
           </li>
         </ul>
-        <!-- <span *ngIf="coffeeOrder.length > 0" style="padding-bottom:15px;">
-          Total Cost: {{ totalSum }}</span
-        > -->
 
         <div class="col-lg-12 pb15">
           <!--cancel pending order-->
@@ -114,7 +110,6 @@
             Submit
           </button>
         </div>
-        <!--success message-->
       </div>
     </form>
   </div>

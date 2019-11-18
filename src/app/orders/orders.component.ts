@@ -9,18 +9,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-totalSum: number;
-@Output() public totalSumFound = new EventEmitter<any>();
+  totalSum: number;
+  @Output() totalSumFound = new EventEmitter<number>();
 
-coffees = ['A-meow-ricano', 'Flat Fluff White', 'Cat-uccino', 'Latte', 'Espresso', 'Meow-chiatto', 'Mocha', 'Hot Chocolate', 'Kit-Tea'];
-// coffees = [
-//   {product: 'A-meow-ricano', price: 4 },
-//   {product: 'Cat-uccino', price: 3 },
-//   {product: 'Latte', price: 2 },
-//   {product: 'Meow-chiatto', price: 3 },
-//   {product: 'Mocha', price: 2 },
-//   {product: 'Kit-Tea', price: 2 }
-// ];
+  coffees = [
+    { product: 'A-meow-ricano', price: 4 },
+    { product: 'Cat-uccino', price: 3 },
+    { product: 'Latte', price: 2 },
+    { product: 'Meow-chiatto', price: 3 },
+    { product: 'Mocha', price: 2 },
+    { product: 'Kit-Tea', price: 2 }
+  ];
 
   coffeeOrder = []; // house cafe order
   showSubmit = false;
@@ -39,11 +38,11 @@ coffees = ['A-meow-ricano', 'Flat Fluff White', 'Cat-uccino', 'Latte', 'Espresso
     // returns the index within the calling this.coffeeOrder object of the first occurrence
     // of the specified value, starting the search at -1 if the value is not found.
     // declaring the index
-      const index = this.coffeeOrder.indexOf(coffee);
-      // changes the content of an array, adding new elements while removing old elements.
-      // index - index at where to start changing array
-      // howMany - an int indicating the # of old array elements to remove, if 0 none are removed
-      if (index > -1) { this.coffeeOrder.splice(index, 1); }
+    const index = this.coffeeOrder.indexOf(coffee);
+    // changes the content of an array, adding new elements while removing old elements.
+    // index - index at where to start changing array
+    // howMany - an int indicating the # of old array elements to remove, if 0 none are removed
+    if (index > -1) { this.coffeeOrder.splice(index, 1); }
   }
 
   // cancel pending order list
@@ -59,34 +58,37 @@ coffees = ['A-meow-ricano', 'Flat Fluff White', 'Cat-uccino', 'Latte', 'Espresso
     // assign data to form value
     const data = this.ordersService.form.value;
 
+    // works but refactor
+    // adds the sum of products in order
+    let sum = 0;
+    this.coffeeOrder.forEach(obj => {
+      for (const property in obj) {
+        if (property !== 'product') {
+          sum += obj[property];
+        }
+      }
+    });
+
+    this.totalSum = sum;
+
+    // emit the sum
+    this.totalSumFound.emit(sum);
+
+    // this adds total cost to front of coffeeOrder array
+    this.coffeeOrder.unshift({ totalCost: sum });
+
+
     // create order
     this.ordersService.createCoffeeOrder(data);
-      //  .then(res => {
-        // read up more on how to use promises
-      //  });
+    //  .then(res => {
+    // read up more on how to use promises
+    //  });
 
 
     // creates an object of all the prices
     // const prices = this.coffees.map( coffees => coffees.price );
 
-    // works but refactor
-    // adds the sum of products in order
-    // let sum = 0;
-    // this.coffeeOrder.forEach(obj => {
-    // for (const property in obj) {
-    //     if (property !== 'product') {
-    //     sum += obj[property];
-    //     }
-    //   }
-    // });
-
-    // this.totalSum = sum;
-
-    // this.totalSumFound.emit(this.totalSum);
-
-    // console.log('total sum of coffee order:', this.totalSum);
-
-
+    console.log('the data: ', data);
 
     // hides buttons
     this.showSubmit = false;
@@ -99,9 +101,9 @@ coffees = ['A-meow-ricano', 'Flat Fluff White', 'Cat-uccino', 'Latte', 'Espresso
 
     console.log('Order has been submitted!');
 
-   }
+  }
 
-ngOnInit() {
+  ngOnInit() {
     // validation
     this.ordersService.form = new FormGroup({
       orderNumber: new FormControl('', [Validators.required, Validators.minLength(2)]),
