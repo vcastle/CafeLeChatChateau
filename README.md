@@ -14,13 +14,13 @@ Put in an order for a coffee (or two) using the form on site. Be sure to look ca
 
 # Examples
 
-![Image of Reservation](/chateauNala_pricing.png)
+![Image of Landing Page](/chateauNala_pricing.png)
 
 Put in a new order -
-![Image of Reservation](/chateauNala_newOrder.png)
+![Image of Adding a New Order](/chateauNala_newOrder.png)
 
 Submitted order -
-![Image of Reservation](/chateauNala_submitted.png)
+![Image of Order Submitted](/chateauNala_submitted.png)
 
 The order in database
-![Image of Reservation](/chateauNala_db.jpg)
+![Image of Data in Firestore Database](/chateauNala_db.jpg)
